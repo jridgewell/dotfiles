@@ -50,8 +50,10 @@ nnoremap <C-l> <C-w>l
 " ====================== Backups & Undo ======================
 silent !mkdir ~/.vim/backup > /dev/null 2>&1
 set history=500                 " Remember last 500 commands
-set undodir=~/.vim/backup       " Store undo history
-set undofile                    " Same
+if has('persistent_undo')
+    set undodir=~/.vim/backup       " Store undo history
+    set undofile                    " Same
+endif
 set backupdir=~/.vim/backup     " Centralized storage of .swap files
 set directory=~/.vim/backup     " Same
 
