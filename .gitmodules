@@ -1,0 +1,75 @@
+[submodule "home/.vim/bundle/ack.vim"]
+	path = home/.vim/bundle/ack.vim
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "home/.vim/bundle/ctrlp.vim"]
+	path = home/.vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule "home/.vim/bundle/nerdcommenter"]
+	path = home/.vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "home/.vim/bundle/nerdtree"]
+	path = home/.vim/bundle/nerdtree
+	url = git://github.com/jridgewell/nerdtree.git
+[submodule "home/.vim/bundle/numbers.vim"]
+	path = home/.vim/bundle/numbers.vim
+	url = git://github.com/myusuf3/numbers.vim.git
+[submodule "home/.vim/bundle/snipmate-snippets"]
+	path = home/.vim/bundle/snipmate-snippets
+	url = git://github.com/honza/snipmate-snippets.git
+[submodule "home/.vim/bundle/supertab"]
+	path = home/.vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "home/.vim/bundle/syntastic"]
+	path = home/.vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule "home/.vim/bundle/tagbar"]
+	path = home/.vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+[submodule "home/.vim/bundle/tlib_vim"]
+	path = home/.vim/bundle/tlib_vim
+	url = git://github.com/tomtom/tlib_vim.git
+[submodule "home/.vim/bundle/vim-addon-mw-utils"]
+	path = home/.vim/bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "home/.vim/bundle/vim-indent-guides"]
+	path = home/.vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "home/.vim/bundle/vim-powerline"]
+	path = home/.vim/bundle/vim-powerline
+	url = git://github.com/skwp/vim-powerline.git
+[submodule "home/.vim/bundle/vim-smartinput"]
+	path = home/.vim/bundle/vim-smartinput
+	url = git://github.com/kana/vim-smartinput.git
+[submodule "home/.vim/bundle/vim-snipmate"]
+	path = home/.vim/bundle/vim-snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "home/.vim/colors/vim-colors-solarized"]
+	path = home/.vim/colors/vim-colors-solarized
+	url = git://github.com/skwp/vim-colors-solarized.git
+[submodule "home/.vim/syntax/vim-javascript"]
+	path = home/.vim/syntax/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "home/.vim/syntax/vim-node.js"]
+	path = home/.vim/syntax/vim-node.js
+	url = git://github.com/mmalecki/vim-node.js.git
+[submodule "home/.vim/syntax/vim-rspec"]
+	path = home/.vim/syntax/vim-rspec
+	url = git://github.com/skwp/vim-rspec.git
+[submodule "home/.vim/syntax/scss-syntax.vim"]
+	path = home/.vim/syntax/scss-syntax.vim
+	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule "home/.vim/syntax/html5.vim"]
+	path = home/.vim/syntax/html5.vim
+	url = git://github.com/othree/html5.vim.git
+[submodule "home/.vim/syntax/vim-markdown"]
+	path = home/.vim/syntax/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "home/.vim/syntax/vim-rails"]
+	path = home/.vim/syntax/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "home/.vim/syntax/vim-ruby"]
+	path = home/.vim/syntax/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "home/.vim/syntax/vim-endwise"]
+	path = home/.vim/syntax/vim-endwise
+	url = git://github.com/tpope/vim-endwise.git
