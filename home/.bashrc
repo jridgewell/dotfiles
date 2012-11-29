@@ -60,9 +60,14 @@ shopt -s histverify
 # Edit things in vim
 export EDITOR=vim
 
+# Bash Completion
 if [ -n $(which brew 2> /dev/null) -a -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
 
 
 ##########################
