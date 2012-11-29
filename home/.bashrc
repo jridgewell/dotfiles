@@ -157,4 +157,5 @@ cdf() {
 
 
 # PS1
-export PS1="${BOLD}${GREEN}\u${RESET} in ${BOLD}${BLUE}\$( if [[ -n \$(git rev-parse --show-toplevel 2> /dev/null) ]]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
+export RENAME_TITLE="\033]0;\u@\h\007"
+export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u${RESET} in ${BOLD}${BLUE}\$( if [[ -n \$(git rev-parse --show-toplevel 2> /dev/null) ]]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
