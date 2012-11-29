@@ -33,7 +33,7 @@ export THEOS_DEVICE_IP=Kryptonite.local
 ##########################
 ### Aliases ##############
 ##########################
-if [ -n $(which hub 2> /dev/null) ]; then alias git='hub'; fi
+if [ $(which hub 2> /dev/null) ]; then alias git='hub'; fi
 alias open='open1'
 alias mkdir='mkd'
 alias ll='ls -lhAF'
@@ -61,7 +61,7 @@ shopt -s histverify
 export EDITOR=vim
 
 # Bash Completion
-if [ -n $(which brew 2> /dev/null) -a -f `brew --prefix`/etc/bash_completion ]; then
+if [ $(which brew 2> /dev/null) -a -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
 if [ -f /etc/bash_completion ]; then
@@ -163,4 +163,4 @@ cdf() {
 
 # PS1
 export RENAME_TITLE="\033]0;\u@\h\007"
-export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u${RESET} in ${BOLD}${BLUE}\$( if [[ -n \$(git rev-parse --show-toplevel 2> /dev/null) ]]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
+export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u${RESET} in ${BOLD}${BLUE}\$( if [ \$(git rev-parse --show-toplevel 2> /dev/null) ]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
