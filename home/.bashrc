@@ -16,7 +16,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # JAVA
 export CLASSPATH="/usr/share/java/junit-4.8.2/junit.jar:/usr/share/java/junit-4.8.2/:$CLASSPATH"
 # Ruby
-if [ -n $(which rbenv 2> /dev/null) ]; then eval "$(rbenv init -)"; fi
+if [ $(which rbenv 2> /dev/null) ]; then eval "$(rbenv init -)"; fi
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
@@ -61,8 +61,11 @@ shopt -s histverify
 export EDITOR=vim
 
 # Bash Completion
-if [ $(which brew 2> /dev/null) -a -f `brew --prefix`/etc/bash_completion ]; then
-	. `brew --prefix`/etc/bash_completion
+if [ $(which brew 2> /dev/null) ]; then
+	if [ -f `brew --prefix`/etc/bash_completion ]; then
+		# . `brew --prefix`/etc/bash_completion
+		echo 'found'
+	fi
 fi
 if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
