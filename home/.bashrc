@@ -70,27 +70,27 @@ fi
 ##########################
 if tput setaf 1 &> /dev/null; then
 	tput sgr0
-	RED=$(tput setaf 1)
-	GREEN=$(tput setaf 2)
-	BLUE=$(tput setaf 4)
-	BOLD=$(tput bold)
-	RESET=$(tput sgr0)
-	# BLACK=$(tput setaf 0)
-	# YELLOW=$(tput setaf 3)
-	# MAGENTA=$(tput setaf 5)
-	# CYAN=$(tput setaf 6)
-	# WHITE=$(tput setaf 7)
+	RED="\[$(tput setaf 1)\]"
+	GREEN="\[$(tput setaf 2)\]"
+	BLUE="\[$(tput setaf 4)\]"
+	BOLD="\[$(tput bold)\]"
+	RESET="\[$(tput sgr0)\]"
+	# BLACK="\[$(tput setaf 0)\]"
+	# YELLOW="\[$(tput setaf 3)\]"
+	# MAGENTA="\[$(tput setaf 5)\]"
+	# CYAN="\[$(tput setaf 6)\]"
+	# WHITE="\[$(tput setaf 7)\]"
 else
-	RED="\033[0;31m"
-	GREEN="\033[0;32m"
-	BLUE="\033[0;34m"
+	RED="\[\033[0;31m\]"
+	GREEN="\[\033[0;32m\]"
+	BLUE="\[\033[0;34m\]"
 	BOLD=""
-	RESET="\033[m"
-	# BLACK="\033[0;30m"
-	# YELLOW="\033[1;33m"
-	# MAGENTA="\033[0;35m"
-	# CYAN="\033[0;36m"
-	# WHITE="\033[1;37m"
+	RESET="\[\033[m\]"
+	# BLACK="\[\033[0;30m\]"
+	# YELLOW="\[\033[0;33m\]"
+	# MAGENTA="\[\033[0;35m\]"
+	# CYAN="\[\033[0;36m\]"
+	# WHITE="\[\033[0;37m\]"
 fi
 export RED
 export GREEN
@@ -157,4 +157,4 @@ cdf() {
 
 
 # PS1
-export PS1="\[${BOLD}${GREEN}\]\u\[${RESET}\] in \[${BOLD}${BLUE}\]\$( if [[ -n \$(git rev-parse --show-toplevel 2> /dev/null) ]]; then echo \"\$(parse_git_path_relative_to_root)\[${RESET}\] on \[${BOLD}${RED}\]\$(parse_git_branch) \[${RESET}${RED}\]\"; else echo \"\w\[${RESET}${BLUE}\]\"; fi)\n\$\[${RESET}\] "
+export PS1="${BOLD}${GREEN}\u${RESET} in ${BOLD}${BLUE}\$( if [[ -n \$(git rev-parse --show-toplevel 2> /dev/null) ]]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
