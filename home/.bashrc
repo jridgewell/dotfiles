@@ -16,7 +16,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # JAVA
 export CLASSPATH="/usr/share/java/junit-4.8.2/junit.jar:/usr/share/java/junit-4.8.2/:$CLASSPATH"
 # Ruby
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if [ -n $(which rbenv 2> /dev/null) ]; then eval "$(rbenv init -)"; fi
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
@@ -33,7 +33,7 @@ export THEOS_DEVICE_IP=Kryptonite.local
 ##########################
 ### Aliases ##############
 ##########################
-alias git='hub'
+if [ -n $(which hub 2> /dev/null) ]; then alias git='hub'; fi
 alias open='open1'
 alias mkdir='mkd'
 alias ll='ls -lhAF'
@@ -60,7 +60,7 @@ shopt -s histverify
 # Edit things in vim
 export EDITOR=vim
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
+if [ -n $(which brew 2> /dev/null) -a -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
 
