@@ -9,6 +9,9 @@ fi
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+if [ -f "$HOME/.path" ]; then
+    . "$HOME/.path"
+fi
 
 ##########################
 ### Language Specific ####
