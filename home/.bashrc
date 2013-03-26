@@ -8,7 +8,9 @@ fi
 ##########################
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:$PATH"
 if [ -f "$HOME/.path" ]; then
     . "$HOME/.path"
 fi
@@ -28,7 +30,7 @@ export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 ### iOS Dev ##############
 ##########################
 export THEOS=/opt/theos
-export PATH="$PATH:/opt/theos/bin:/opt/theos/sbin"
+export PATH="$PATH:$THEOS/bin:$THEOS/sbin"
 # export SDKVERSION=5.0
 export THEOS_DEVICE_IP=Kryptonite.local
 
