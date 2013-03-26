@@ -152,7 +152,7 @@ mkd() {
 
 # cd to frontmost finder folder
 cdf() {
-    currFolderPath=$( /usr/bin/osascript <<"    EOT"
+    local currFolderPath=$( /usr/bin/osascript <<"    EOT"
         tell application "Finder"
             try
                 set currFolder to (folder of the front window as alias)
