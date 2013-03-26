@@ -21,7 +21,11 @@ fi
 # JAVA
 export CLASSPATH="/usr/share/java/junit-4.8.2/junit.jar:/usr/share/java/junit-4.8.2/:$CLASSPATH"
 # Ruby
-if [ $(which rbenv 2> /dev/null) ]; then eval "$(rbenv init -)"; fi
+if [ $(which rbenv 2> /dev/null) ]; then
+    initrbenv() {
+        eval "$(rbenv init -)";
+    }
+fi
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
