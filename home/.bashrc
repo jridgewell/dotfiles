@@ -32,8 +32,11 @@ export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 export THEOS=/opt/theos
 export PATH="$PATH:$THEOS/bin:$THEOS/sbin"
 # export SDKVERSION=5.0
-export THEOS_DEVICE_IP=Kryptonite.local
+export THEOS_DEVICE_IP=Mort.local
 
+export iOSOpenDevPath=/opt/iOSOpenDev
+export iOSOpenDevDevice=Mort.local
+export PATH="$PATH:$iOSOpenDevPath/bin"
 
 ##########################
 ### Aliases ##############
