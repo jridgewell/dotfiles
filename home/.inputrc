@@ -15,3 +15,7 @@ set skip-completed-text on
 
 # Use Alt/Meta + Delete to delete the preceding word
 "\e[3;3~": kill-word
+
+# Type `cd /` then up. Searches for last command starting with `cd /`
+"\e[A": history-search-backward
+"\e[B": history-search-forward
