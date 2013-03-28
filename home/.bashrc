@@ -3,6 +3,10 @@ if [ -z "$PS1" ]; then
    return
 fi
 
+if [ -f "$HOME/.bashrc.local" ]; then
+    . "$HOME/.bashrc.local"
+fi
+
 ##########################
 ### Path #################
 ##########################
