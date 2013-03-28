@@ -1,5 +1,5 @@
 " Make Powerline Pretty
-let g:Powerline_symbols='fancy'
+let g:Powerline_symbols='compatible'
 let g:Powerline_colorscheme='skwp'
 
 " Customize which Segments appear
