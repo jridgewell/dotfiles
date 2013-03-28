@@ -103,8 +103,13 @@ endif
 " ========================== Theme ===========================
 set t_Co=256
 set background=dark
+let g:solarized_termtrans=1
+if has('gui_running')
+    set guifont=Anonymous\ Pro\ for\ Powerline:h14
+else
+    let g:solarized_termcolors=256
+endif
 colorscheme solarized
-set guifont=Anonymous\ Pro\ for\ Powerline:h14
 
 
 " ================== Load Specific Plugins ===================
