@@ -101,13 +101,17 @@ endif
 
 
 " ========================== Theme ===========================
-set t_Co=256
+if &term =~ "256"
+    set t_Co=256
+    let g:solarized_termcolors=256
+else
+    set t_Co=16
+    let g:solarized_termcolors=16
+endif
 set background=dark
 let g:solarized_termtrans=1
 if has('gui_running')
     set guifont=Anonymous\ Pro\ for\ Powerline:h14
-else
-    let g:solarized_termcolors=256
 endif
 colorscheme solarized
 
