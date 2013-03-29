@@ -3,8 +3,14 @@ if [ -z "$PS1" ]; then
    return
 fi
 
-if [ -f "$HOME/.bashrc.local" ]; then
-    . "$HOME/.bashrc.local"
+
+##########################
+# Source Machine Specific#
+##########################
+if [ -d "$HOME/.bash" ]; then
+    for f in "$HOME/.bash/"; do
+        source $f
+    done
 fi
 
 ##########################
@@ -15,9 +21,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
-if [ -f "$HOME/.path" ]; then
-    . "$HOME/.path"
-fi
 
 ##########################
 ### Language Specific ####
