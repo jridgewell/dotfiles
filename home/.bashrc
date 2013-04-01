@@ -92,8 +92,8 @@ if [ $(which brew 2> /dev/null) ]; then
     fi
 fi
 if [ -d "$HOME/.bash-completions" ]; then
-    for f in "$HOME/.bash-completions/*"; do
-        source $f
+    for f in "$HOME/.bash-completions"/*; do
+        . "$f"
     done
 fi
 
