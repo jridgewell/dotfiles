@@ -103,28 +103,28 @@ fi
 ### Terminal Colors ######
 ##########################
 if tput setaf 1 &> /dev/null; then
-	tput sgr0
-	RED="\[$(tput setaf 1)\]"
-	GREEN="\[$(tput setaf 2)\]"
-	BLUE="\[$(tput setaf 4)\]"
-	BOLD="\[$(tput bold)\]"
-	RESET="\[$(tput sgr0)\]"
-	# BLACK="\[$(tput setaf 0)\]"
-	# YELLOW="\[$(tput setaf 3)\]"
-	# MAGENTA="\[$(tput setaf 5)\]"
-	# CYAN="\[$(tput setaf 6)\]"
-	# WHITE="\[$(tput setaf 7)\]"
+    tput sgr0
+    RED="\[$(tput setaf 1)\]"
+    GREEN="\[$(tput setaf 2)\]"
+    BLUE="\[$(tput setaf 4)\]"
+    BOLD="\[$(tput bold)\]"
+    RESET="\[$(tput sgr0)\]"
+    # BLACK="\[$(tput setaf 0)\]"
+    # YELLOW="\[$(tput setaf 3)\]"
+    # MAGENTA="\[$(tput setaf 5)\]"
+    # CYAN="\[$(tput setaf 6)\]"
+    # WHITE="\[$(tput setaf 7)\]"
 else
-	RED="\[\033[0;31m\]"
-	GREEN="\[\033[0;32m\]"
-	BLUE="\[\033[0;34m\]"
-	BOLD=""
-	RESET="\[\033[m\]"
-	# BLACK="\[\033[0;30m\]"
-	# YELLOW="\[\033[0;33m\]"
-	# MAGENTA="\[\033[0;35m\]"
-	# CYAN="\[\033[0;36m\]"
-	# WHITE="\[\033[0;37m\]"
+    RED="\[\033[0;31m\]"
+    GREEN="\[\033[0;32m\]"
+    BLUE="\[\033[0;34m\]"
+    BOLD=""
+    RESET="\[\033[m\]"
+    # BLACK="\[\033[0;30m\]"
+    # YELLOW="\[\033[0;33m\]"
+    # MAGENTA="\[\033[0;35m\]"
+    # CYAN="\[\033[0;36m\]"
+    # WHITE="\[\033[0;37m\]"
 fi
 export RED
 export GREEN
@@ -147,19 +147,19 @@ parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 parse_git_path_relative_to_root() {
-	local path_relative=$(git rev-parse --show-prefix | sed -e 's/\/$//' -e 's/\(.\)/\/\1/')
-	git rev-parse --show-toplevel | sed -e "s|.*\/\([^/]*\)$|\1$path_relative|"
+    local path_relative=$(git rev-parse --show-prefix | sed -e 's/\/$//' -e 's/\(.\)/\/\1/')
+    git rev-parse --show-toplevel | sed -e "s|.*\/\([^/]*\)$|\1$path_relative|"
 }
 
 # Custom open function
 # Will open the current directory without parameters
 # Or will open the passed parameters
 open1() {
-	if [[ $1 ]]; then
-		/usr/bin/open $1
-	else
-		/usr/bin/open .
-	fi
+    if [[ $1 ]]; then
+        /usr/bin/open $1
+    else
+        /usr/bin/open .
+    fi
 }
 
 # I hate expansion
@@ -169,7 +169,7 @@ _expand() {
 
 # Create the directory then cd to it
 mkd() {
-	/bin/mkdir -p "$@" && cd "$@"
+    /bin/mkdir -p "$@" && cd "$@"
 }
 
 # cd to frontmost finder folder
