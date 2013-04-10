@@ -98,59 +98,9 @@ if [ -d "$HOME/.bash-completions" ]; then
 fi
 
 
-
-##########################
-### Terminal Colors ######
-##########################
-if tput setaf 1 &> /dev/null; then
-    tput sgr0
-    RED="\[$(tput setaf 1)\]"
-    GREEN="\[$(tput setaf 2)\]"
-    BLUE="\[$(tput setaf 4)\]"
-    BOLD="\[$(tput bold)\]"
-    RESET="\[$(tput sgr0)\]"
-    # BLACK="\[$(tput setaf 0)\]"
-    # YELLOW="\[$(tput setaf 3)\]"
-    # MAGENTA="\[$(tput setaf 5)\]"
-    # CYAN="\[$(tput setaf 6)\]"
-    # WHITE="\[$(tput setaf 7)\]"
-else
-    RED="\[\033[0;31m\]"
-    GREEN="\[\033[0;32m\]"
-    BLUE="\[\033[0;34m\]"
-    BOLD=""
-    RESET="\[\033[m\]"
-    # BLACK="\[\033[0;30m\]"
-    # YELLOW="\[\033[0;33m\]"
-    # MAGENTA="\[\033[0;35m\]"
-    # CYAN="\[\033[0;36m\]"
-    # WHITE="\[\033[0;37m\]"
-fi
-export RED
-export GREEN
-export BLUE
-export BOLD
-export RESET
-# export BLACK
-# export YELLOW
-# export MAGENTA
-# export CYAN
-# export WHITE
-
 ##########################
 ### Functions ############
 ##########################
-parse_git_dirty() {
-    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
-}
-parse_git_branch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
-parse_git_path_relative_to_root() {
-    local path_relative=$(git rev-parse --show-prefix | sed -e 's/\/$//' -e 's/\(.\)/\/\1/')
-    git rev-parse --show-toplevel | sed -e "s|.*\/\([^/]*\)$|\1$path_relative|"
-}
-
 # Custom open function
 # Will open the current directory without parameters
 # Or will open the passed parameters
@@ -217,6 +167,84 @@ extract () {
 }
 
 
-# PS1
+##########################
+### Terminal Colors ######
+##########################
+if tput setaf 1 &> /dev/null; then
+    tput sgr0
+    RED="$(tput setaf 1)"
+    GREEN="$(tput setaf 2)"
+    BLUE="$(tput setaf 4)"
+    BOLD="$(tput bold)"
+    RESET="$(tput sgr0)"
+    BLACK="$(tput setaf 0)"
+    YELLOW="$(tput setaf 3)"
+    MAGENTA="$(tput setaf 5)"
+    CYAN="$(tput setaf 6)"
+    WHITE="$(tput setaf 7)"
+else
+    RED="\033[0;31m"
+    GREEN="\033[0;32m"
+    BLUE="\033[0;34m"
+    BOLD=""
+    RESET="\033[m"
+    BLACK="\033[0;30m"
+    YELLOW="\033[0;33m"
+    MAGENTA="\033[0;35m"
+    CYAN="\033[0;36m"
+    WHITE="\033[0;37m"
+fi
+export RED
+export GREEN
+export BLUE
+export BOLD
+export RESET
+export BLACK
+export YELLOW
+export MAGENTA
+export CYAN
+export WHITE
+
+
+##########################
+#### PS1 #################
+##########################
+parse_git_dirty() {
+    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+}
+parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+parse_git_path_relative_to_root() {
+    local path_relative=$(git rev-parse --show-prefix)
+    local path=$(git rev-parse --show-toplevel)
+    path_relative=${path_relative+/$path_relative}
+    echo -n "${path##*/}${path_relative%%/}"
+}
+is_vim_subshell() {
+    if [[ -z $VIMRUNTIME ]]; then
+        return 1; // NOT INSIDE VIM
+    else
+        return 0; // INSIDE VIM
+    fi
+}
+is_git_directory() {
+    git rev-parse --show-toplevel &> /dev/null;
+}
+
+vim_ps1() {
+    if is_vim_subshell; then
+        echo -n " ${YELLOW}(VIM)${RESET}"
+    fi
+}
+path_ps1() {
+    echo -n "${BOLD}${BLUE}"
+    if is_git_directory; then
+        echo -n "$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}$(parse_git_branch) ${RESET}${RED}"
+    else
+        echo -n "${PWD/$HOME/~}${RESET}${BLUE}"
+    fi
+}
+
 export RENAME_TITLE="\033]0;\u@\h\007"
-export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u@\h${RESET} in ${BOLD}${BLUE}\$( if [ \"\$(git rev-parse --show-toplevel 2> /dev/null)\" ]; then echo \"\$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}\$(parse_git_branch) ${RESET}${RED}\"; else echo \"\w${RESET}${BLUE}\"; fi)\n\$${RESET} "
+export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u@\h${RESET}\$(vim_ps1) in \$(path_ps1)\n\$${RESET} "
