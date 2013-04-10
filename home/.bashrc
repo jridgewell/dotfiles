@@ -170,30 +170,30 @@ extract () {
 ##########################
 ### Terminal Colors ######
 ##########################
-if tput setaf 1 &> /dev/null; then
-    tput sgr0
-    RED="$(tput setaf 1)"
-    GREEN="$(tput setaf 2)"
-    BLUE="$(tput setaf 4)"
-    BOLD="$(tput bold)"
-    RESET="$(tput sgr0)"
-    BLACK="$(tput setaf 0)"
-    YELLOW="$(tput setaf 3)"
-    MAGENTA="$(tput setaf 5)"
-    CYAN="$(tput setaf 6)"
-    WHITE="$(tput setaf 7)"
-else
+#if tput setaf 1 &> /dev/null; then
+    #tput sgr0
+    #RED="$(tput setaf 1)"
+    #GREEN="$(tput setaf 2)"
+    #BLUE="$(tput setaf 4)"
+    #BOLD="$(tput bold)"
+    #RESET="$(tput sgr0)"
+    #BLACK="$(tput setaf 0)"
+    #YELLOW="$(tput setaf 3)"
+    #MAGENTA="$(tput setaf 5)"
+    #CYAN="$(tput setaf 6)"
+    #WHITE="$(tput setaf 7)"
+#else
     RED="\033[0;31m"
     GREEN="\033[0;32m"
     BLUE="\033[0;34m"
-    BOLD=""
+    BOLD="\033[1m"
     RESET="\033[m"
     BLACK="\033[0;30m"
     YELLOW="\033[0;33m"
     MAGENTA="\033[0;35m"
     CYAN="\033[0;36m"
     WHITE="\033[0;37m"
-fi
+#fi
 export RED
 export GREEN
 export BLUE
@@ -234,17 +234,18 @@ is_git_directory() {
 
 vim_ps1() {
     if is_vim_subshell; then
-        echo -n " ${YELLOW}(VIM)${RESET}"
+        echo -en " ${YELLOW}(VIM)${RESET}"
     fi
 }
 path_ps1() {
-    echo -n "${BOLD}${BLUE}"
+    echo -en "${BLUE}${BOLD}"
     if is_git_directory; then
-        echo -n "$(parse_git_path_relative_to_root)${RESET} on ${BOLD}${RED}$(parse_git_branch) ${RESET}${RED}"
+        echo -en "$(parse_git_path_relative_to_root)${RESET} on ${RED}${BOLD}$(parse_git_branch) ${RESET}${RED}"
     else
-        echo -n "${PWD/$HOME/~}${RESET}${BLUE}"
+        echo -en "${PWD/$HOME/~}${RESET}${BLUE}"
     fi
 }
 
 export RENAME_TITLE="\033]0;\u@\h\007"
-export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u@\h${RESET}\$(vim_ps1) in \$(path_ps1)\n\$${RESET} "
+#export PS1="${RENAME_TITLE}${BOLD}${GREEN}\u@\h${RESET}\$(vim_ps1) in \$(path_ps1)\n\$${RESET} "
+export PS1="${RENAME_TITLE}${GREEN}${BOLD}\u@\h${RESET}\$(vim_ps1) in \$(path_ps1)\r\n\$${RESET} "
