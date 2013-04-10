@@ -229,7 +229,7 @@ is_vim_subshell() {
     fi
 }
 is_git_directory() {
-    git rev-parse --show-toplevel &> /dev/null;
+    git rev-parse --show-toplevel &> /dev/null
 }
 
 vim_ps1() {
