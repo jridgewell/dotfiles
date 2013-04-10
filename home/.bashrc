@@ -8,7 +8,7 @@ fi
 # Source Machine Specific#
 ##########################
 if [ -d "$HOME/.bash" ]; then
-    for f in "$HOME/.bash/"; do
+    for f in "$HOME/.bash/"*; do
         source $f
     done
 fi
