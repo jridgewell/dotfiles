@@ -1,8 +1,7 @@
 setopt PROMPT_SUBST
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR='\u25B6'
-SEGMENT_SEPARATOR='>'
+SEGMENT_SEPARATOR='▶'
 #SEGMENT_SEPARATOR='⮀'
 
 # Begin a segment
@@ -55,13 +54,13 @@ function ps1_git() {
     if is_git_directory; then
         local ref dirty
         dirty=$(parse_git_dirty)
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="\u21d2 $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="↬ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
         if [[ -n $dirty ]]; then
             prompt_segment yellow black
         else
             prompt_segment green black
         fi
-        echo -n "${ref/refs\/heads\//\u21E5}$dirty"
+        echo -n "${ref/refs\/heads\//⇥}$dirty"
     fi
 }
 function ps1_path() {
