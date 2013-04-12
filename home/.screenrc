@@ -1,2 +1,6 @@
 startup_message off
-hardstatus alwayslastline "%w"
+#caption always "%{-b ..}%-w%{+b ..}[[%n%f %t]]%{-}%+w"
+#hardstatus alwayslastline "%{-b ..}%-w%{+b ..}[[%n%f %t]]%{-}%+w"
+bindkey "^A[" prev  # change window with ctrl-left
+bindkey "^A]" next  # change window with ctrl-right
+hardstatus alwayslastline "%{= KB} %-w%?%F%{= kr}%:%{= kW}%? %n %t %{-}%+w"
