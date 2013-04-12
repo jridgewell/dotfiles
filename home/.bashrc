@@ -25,8 +25,6 @@ export PATH="$HOME/bin:$PATH"
 ##########################
 ### Language Specific ####
 ##########################
-# JAVA
-export CLASSPATH="/usr/share/java/junit-4.8.2/junit.jar:/usr/share/java/junit-4.8.2/:$CLASSPATH"
 # Ruby
 if [ $(which rbenv 2> /dev/null) ]; then
     initrbenv() {
@@ -56,7 +54,7 @@ export PATH="$PATH:$iOSOpenDevPath/bin"
 ##########################
 if [ $(which hub 2> /dev/null) ]; then alias git='hub'; fi
 alias open='open1'
-alias mkdir='mkd'
+alias mcd='mkd'
 alias ll='ls -lhAF'
 alias ..='cd ..'
 alias -- -='cd -'
