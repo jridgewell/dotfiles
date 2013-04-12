@@ -5,7 +5,7 @@ export EDITOR=vim
 ### Language Specific ####
 ##########################
 # Ruby
-if [ $(which rbenv 2> /dev/null) ]; then
+if [[ "$(which rbenv 2> /dev/null)" == 0 ]]; then
     initrbenv() {
         eval "$(rbenv init -)";
     }

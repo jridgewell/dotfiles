@@ -1,4 +1,6 @@
-if [ $(which hub 2> /dev/null) ]; then alias git='hub'; fi
+if [[ $(which hub 2> /dev/null) == 0 ]]; then
+    alias git='hub'
+fi
 alias open='open1'
 alias ll='ls -lhAF'
 alias ..='cd ..'
