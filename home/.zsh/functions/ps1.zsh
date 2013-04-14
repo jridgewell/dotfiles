@@ -1,7 +1,7 @@
 setopt PROMPT_SUBST
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR='▶'
+SEGMENT_SEPARATOR=''
 #SEGMENT_SEPARATOR='⮀'
 
 # Begin a segment
@@ -60,7 +60,7 @@ function ps1_git() {
         else
             prompt_segment green black
         fi
-        echo -n "${ref/refs\/heads\//⇥}$dirty"
+        echo -n "${ref/refs\/heads\//⇥ }$dirty"
     fi
 }
 function ps1_path() {
