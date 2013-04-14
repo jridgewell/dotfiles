@@ -35,7 +35,7 @@ function parse_git_dirty() {
     [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
 }
 function is_vim_subshell() {
-    if [[ -z $vimruntime ]]; then
+    if [[ -z $VIMRUNTIME ]]; then
         return 1; // not inside vim
     else
         return 0; // inside vim
@@ -47,7 +47,7 @@ function is_git_directory() {
 
 function ps1_vim() {
     if is_vim_subshell; then
-        echo -en " %{$fg[yellow]%}(vim)%{$reset_color%}"
+        prompt_segment default yellow "(vim)"
     fi
 }
 function ps1_git() {
