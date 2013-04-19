@@ -1,4 +1,4 @@
-if which hub > /dev/null; then
+if is-callable hub; then
     alias git='hub'
 fi
 alias open='open1'

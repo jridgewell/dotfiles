@@ -5,7 +5,7 @@ export EDITOR=vim
 ### Language Specific ####
 ##########################
 # Ruby
-if which rbenv > /dev/null; then
+if is-callable rbenv; then
     initrbenv() {
         eval "$(rbenv init -)";
     }
