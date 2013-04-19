@@ -8,7 +8,7 @@ if is-callable 'dircolors'; then
         eval "$(dircolors)"
     fi
 
-    alias ls="$aliases[ls] --color=auto"
+    alias ls="ls --color=auto"
 else
     # BSD Core Utilities
     # Define colors for BSD ls.
