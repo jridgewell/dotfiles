@@ -79,8 +79,12 @@ function ps1_status() {
 
 function build_prompt() {
     RETVAL=$?
+    local hostname=$HOSTNAME
+    if [ -z $hostname ]; then
+        hostname="%m"
+    fi
     ps1_status
-    prompt_segment black green "%n@%m"
+    prompt_segment black green "%n@$hostname"
     ps1_path
     ps1_vim
     ps1_git
