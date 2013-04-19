@@ -69,7 +69,11 @@ function ps1_path() {
 function ps1_status() {
     local symbols
     symbols=()
-    [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+    if [[ $RETVAL -ne 0 ]]; then
+        symbols+="%{%F{red}%}✘"
+    else
+        symbols+="%{%F{green}%}✓"
+    fi
     [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
