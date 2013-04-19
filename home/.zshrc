@@ -18,4 +18,11 @@ done
 for config_file ($HOME/.zsh/custom/*.zsh); do
     source $config_file
 done
+
+##########################
+# Source zsh Plugins #####
+##########################
+for config_file ($HOME/.zsh/plugins/*.zsh); do
+    source $config_file
+done
 unset config_file

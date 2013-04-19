@@ -76,5 +76,3 @@ function extract() {
   done
 }
 
-alias x=extract
-
