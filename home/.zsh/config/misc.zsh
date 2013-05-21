@@ -6,9 +6,7 @@ export EDITOR=vim
 ##########################
 # Ruby
 if is-callable rbenv; then
-    initrbenv() {
-        eval "$(rbenv init -)";
-    }
+    eval "$(rbenv init -)";
 fi
 # Node.js
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
