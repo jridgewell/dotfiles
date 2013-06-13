@@ -2,7 +2,6 @@ if is-callable hub; then
     alias git='hub'
 fi
 alias open='open1'
-alias ll='ls -lhAF'
 alias ..='cd ..'
 alias -- -='cd -'
 alias rmdsstore='find . \( -name '.DS_Store' \)  -exec rm {} \;'
