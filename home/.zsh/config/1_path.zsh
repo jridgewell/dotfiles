@@ -1,6 +1,11 @@
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.phpenv/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="$HOME/bin:$PATH"
+typeset -aU path
+
+# Only load PATH once
+if [ -z $PATH_LOADED ]; then
+    echo 'loading path'
+    path=($HOME/.phpenv/bin $path)
+    path=($HOME/.rbenv/bin $path)
+    path=(/usr/local/bin /usr/local/sbin:$path)
+    path=($HOME/bin $path)
+    export PATH_LOADED="loaded!"
+fi
