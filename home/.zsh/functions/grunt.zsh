@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # grunt-cli
 # http://gruntjs.com/
@@ -9,32 +9,16 @@
 
 # Usage:
 #
-# To enable bash <tab> completion for grunt, add the following line (minus the
-# leading #, which is the bash comment character) to your ~/.bashrc file:
+# To enable zsh <tab> completion for grunt, add the following line (minus the
+# leading #, which is the zsh comment character) to your ~/.zshrc file:
 #
-# eval "$(grunt --completion=bash)"
+# eval "$(grunt --completion=zsh)"
 
-# Search the current directory and all parent directories for a gruntfile.
-function _grunt_gruntfile() {
-  local curpath="$PWD"
-  while [[ -n "$curpath" ]]; do
-    for gruntfile in "$curpath/"{G,g}runtfile.{js,coffee}; do
-      if [[ -e "$gruntfile" ]]; then
-        echo "$gruntfile"
-        return
-      fi
-    done
-    curpath="${curpath%/*}"
-  done
-  return 1
-}
-
-# Enable bash autocompletion.
-function _grunt_completions() {
+# Enable zsh autocompletion.
+function _grunt_completion() {
+  local completions
   # The currently-being-completed word.
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  # The current gruntfile, if it exists.
-  local gruntfile="$(_grunt_gruntfile)"
+  local cur="${words[@]}"
   # The current grunt version, available tasks, options, etc.
   local gruntinfo="$(grunt --version --verbose 2>/dev/null)"
   # Options and tasks.
@@ -42,9 +26,13 @@ function _grunt_completions() {
   local compls="$(echo "$gruntinfo" | awk '/Available tasks: / {$1=$2=""; print $0}')"
   # Only add -- or - options if the user has started typing -
   [[ "$cur" == -* ]] && compls="$compls $opts"
+  # Trim whitespace.
+  compls=$(echo "$compls" | sed -e 's/^ *//g' -e 's/ *$//g')
+  # Turn compls into an array to of completions.
+  completions=(${=compls})
   # Tell complete what stuff to show.
-  COMPREPLY=($(compgen -W "$compls" -- "$cur"))
+  compadd -- $completions
 }
 
-complete -o default -F _grunt_completions grunt
+compdef _grunt_completion grunt
 
