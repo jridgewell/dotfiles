@@ -54,13 +54,13 @@ function ps1_git() {
     if is_git_directory; then
         local ref dirty
         dirty=$(parse_git_dirty)
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="↬ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+        branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
         if [[ -n $dirty ]]; then
             prompt_segment yellow black
         else
             prompt_segment green black
         fi
-        echo -n "${ref/refs\/heads\//⇥ }$dirty"
+        echo -n "$branch$dirty"
     fi
 }
 function ps1_path() {
