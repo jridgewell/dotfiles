@@ -18,6 +18,7 @@
     difword = diff --color-words
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
+    back = checkout @{-1}
 [core]
     excludesfile = ~/.cvsignore
     whitespace = trailing-space,space-before-tab,indent-with-non-tab
