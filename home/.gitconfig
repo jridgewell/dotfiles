@@ -15,7 +15,7 @@
 [alias]
     undo = reset --soft HEAD^
     commi = commit -v
-    difword = diff --color-words
+    dif = diff --color-words
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
     back = checkout @{-1}
@@ -35,3 +35,7 @@
     ;autosetuprebase = always
 [push]
     default = current
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
