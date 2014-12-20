@@ -1,6 +1,9 @@
 # make search up and down work, so partially type and hit up/down to find relevant stuff
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 # Alt + ArrowKeys
 bindkey '^[b' backward-word
