@@ -39,3 +39,5 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[remote]
+	pushdefault = origin
