@@ -14,7 +14,8 @@ if is-callable phpenv; then
 fi
 # Node.js
 if is-callable nvm-exec; then
-    source ~/.nvm/nvm.sh
+    export NVM_DIR="$HOME/.nvm"
+    source "$NVM_DIR/nvm.sh"
 else
     export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 fi
