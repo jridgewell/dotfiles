@@ -41,3 +41,7 @@
 	smudge = git media smudge %f
 [remote]
 	pushdefault = origin
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
