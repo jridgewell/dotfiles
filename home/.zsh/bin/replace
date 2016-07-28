@@ -1,1 +1,10 @@
-ag -l $1 | xargs perl -pi -w -e "s/$1/$2/g"
+#!/usr/bin/env ruby
+# Based on https://gist.github.com/gnarf/5406589
+
+if ARGV.length < 3
+  ARGV.unshift ARGV.first
+end
+
+search, find, replace = ARGV
+
+exec(%Q(ag -l '#{search}' | xargs perl -p -i -e 's/#{find}/#{replace}/g'))
