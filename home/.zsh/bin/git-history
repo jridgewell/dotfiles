@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+remote, = ARGV
+
+pattern = if remote
+        "refs/remotes/#{remote}/"
+      else
+        "refs/heads/"
+      end
+
+exec("git for-each-ref --sort=-committerdate #{pattern} --format='%(committerdate:iso8601)    %(refname)'  | head -n 25 | sed -e 's/refs\\/[A-Za-z0-9_-]*\\///'")
