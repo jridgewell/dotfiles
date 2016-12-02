@@ -32,7 +32,7 @@ prompt_end() {
 }
 
 function parse_git_dirty() {
-    [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
 }
 function is_vim_subshell() {
     if [[ -z $VIMRUNTIME ]]; then
@@ -54,7 +54,7 @@ function ps1_git() {
     if is_git_directory; then
         local ref dirty
         dirty=$(parse_git_dirty)
-        branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+        branch=$(git rev-parse --abbrev-ref HEAD)
         if [[ -n $dirty ]]; then
             prompt_segment yellow black
         else
