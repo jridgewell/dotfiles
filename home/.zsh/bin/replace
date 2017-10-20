@@ -1,10 +1,16 @@
 #!/usr/bin/env ruby
 # Based on https://gist.github.com/gnarf/5406589
 
+def command?(name)
+  `which #{name}`
+  $?.success?
+end
+
 if ARGV.length < 3
   ARGV.unshift ARGV.first
 end
 
 search, find, replace = ARGV
 
-exec(%Q(ag -l '#{search}' | xargs perl -p -i -e 's/#{find}/#{replace}/g'))
+prog = command?('rg') ? 'rg' : 'ag'
+exec(%Q(#{prog} -l '#{search}' | xargs perl -p -i -e 's/#{find}/#{replace}/g'))

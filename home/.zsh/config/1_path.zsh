@@ -2,6 +2,7 @@ typeset -aU path
 
 # Only load PATH once
 if [ -z $PATH_LOADED ]; then
+    path=($HOME/homebrew/bin $path)
     path=($HOME/.phpenv/bin $path)
     path=($HOME/.rbenv/bin $path)
     path=($HOME/.nvm $path)
