@@ -18,6 +18,7 @@
     dif = diff --color-words
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep '^[[:lower:]]'
     back = checkout @{-1}
 [core]
     excludesfile = ~/.cvsignore
@@ -43,7 +44,9 @@
 [remote]
     pushdefault = origin
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[hub]
+    protocol = ssh
