@@ -11,4 +11,4 @@ alias rsync='rsync --human-readable --verbose --progress --partial --stats --com
 alias cleanopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user; killall Finder'
 alias tnew='tmux new -s `basename $PWD`'
 alias ag='noglob ag'
-alias ag='noglob rg'
+alias rg='noglob rg'
