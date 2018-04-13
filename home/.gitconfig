@@ -22,7 +22,6 @@
     back = checkout @{-1}
 [core]
     excludesfile = ~/.cvsignore
-    whitespace = trailing-space,space-before-tab,indent-with-non-tab
     quotepath = false
     whitespace = trailing-space,space-before-tab
     autocrlf = input
@@ -37,6 +36,8 @@
 [push]
     default = current
     followTags = true
+[pull]
+    ff = only
 [filter "media"]
     required = true
     clean = git media clean %f
@@ -50,3 +51,5 @@
     required = true
 [hub]
     protocol = ssh
+[include]
+    path = ~/.config/git/config
