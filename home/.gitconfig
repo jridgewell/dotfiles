@@ -14,8 +14,8 @@
   email = justin@ridgewell.name
 [alias]
   undo = reset --soft HEAD^
-  commi = commit -v
-  dif = diff --color-words
+  c = commit -v
+  d = diff --color-words
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep '^[[:lower:]]'
