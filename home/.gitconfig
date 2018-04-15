@@ -1,55 +1,55 @@
 [color]
-    ui = true
+  ui = true
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [user]
-    name = Justin Ridgewell
-    email = justin@ridgewell.name
+  name = Justin Ridgewell
+  email = justin@ridgewell.name
 [alias]
-    undo = reset --soft HEAD^
-    commi = commit -v
-    dif = diff --color-words
-    ignore = update-index --assume-unchanged
-    unignore = update-index --no-assume-unchanged
-    ignored = !git ls-files -v | grep '^[[:lower:]]'
-    back = checkout @{-1}
+  undo = reset --soft HEAD^
+  commi = commit -v
+  dif = diff --color-words
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep '^[[:lower:]]'
+  back = checkout @{-1}
 [core]
-    excludesfile = ~/.cvsignore
-    quotepath = false
-    whitespace = trailing-space,space-before-tab
-    autocrlf = input
+  excludesfile = ~/.cvsignore
+  quotepath = false
+  whitespace = trailing-space,space-before-tab
+  autocrlf = input
 [apply]
-    ;whitespace = error
+  ;whitespace = error
 [format]
-    pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
-    keepBackup = true
+  keepBackup = true
 [branch]
-    ;autosetuprebase = always
+  ;autosetuprebase = always
 [push]
-    default = current
-    followTags = true
+  default = current
+  followTags = true
 [pull]
-    ff = only
+  ff = only
 [filter "media"]
-    required = true
-    clean = git media clean %f
-    smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 [remote]
-    pushdefault = origin
+  pushdefault = origin
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [hub]
-    protocol = ssh
+  protocol = ssh
 [include]
-    path = ~/.config/git/config
+  path = ~/.config/git/config
