@@ -9,6 +9,10 @@
   frag = magenta bold
   old = red bold
   new = green bold
+  oldMoved = blue bold
+  newMoved = blue bold
+  oldMovedAlternative = cyan bold
+  newMovedAlternative = cyan bold
 [user]
   name = Justin Ridgewell
   email = justin@ridgewell.name
@@ -53,3 +57,5 @@
   protocol = ssh
 [include]
   path = ~/.config/git/config
+[diff]
+	colorMoved = default
