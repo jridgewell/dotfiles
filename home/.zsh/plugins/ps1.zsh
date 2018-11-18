@@ -44,6 +44,9 @@ function is_vim_subshell() {
 function is_git_directory() {
     git rev-parse --is-inside-work-tree >/dev/null 2>&1
 }
+function parse_git_branch() {
+    git rev-parse --abbrev-ref HEAD 2>/dev/null
+}
 
 function ps1_vim() {
     if is_vim_subshell; then
@@ -54,7 +57,7 @@ function ps1_git() {
     if is_git_directory; then
         local ref dirty
         dirty=$(parse_git_dirty)
-        branch=$(git rev-parse --abbrev-ref HEAD)
+        branch=$(parse_git_branch)
         if [[ -n $dirty ]]; then
             prompt_segment yellow black
         else
