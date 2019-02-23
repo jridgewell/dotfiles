@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'json'
+require 'net/http'
+require 'uri'
+
+def usage
+  puts "USAGE: git pr-pull PULL_REQUEST_URL"
+  puts "\tgit pr-pull https://github.com/babel/babel/pull/3"
+  exit 1
+end
+
+
+url = ARGV[0]
+
+usage if url.nil?
+
+uri = URI(url)
+match = /^\/([^#?\/]+\/[^#?\/]+)\/pull\/(\d+)/.match(uri.path)
+
+usage if match.nil?
+
+api_url = "https://api.github.com/repos/#{match[1]}/pulls/#{match[2]}"
+response = Net::HTTP.get(URI(api_url))
+json = JSON.parse(response)
+
+head = json['head']
+repo = head['repo']
+
+if repo.nil?
+  puts "Remote deleted..."
+  exit 1
+end
+
+remote = repo['ssh_url']
+remote_ref = head['ref']
+
+exec("git fetch -fu #{remote} #{remote_ref}:pr-#{match[2]} && git checkout pr-#{match[2]}")
