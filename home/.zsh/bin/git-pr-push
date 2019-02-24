@@ -20,8 +20,6 @@ match = /^\/([^#?\/]+\/[^#?\/]+)\/pull\/(\d+)/.match(uri.path)
 
 usage if match.nil?
 
-local_ref = `git rev-parse HEAD`.strip
-
 api_url = "https://api.github.com/repos/#{match[1]}/pulls/#{match[2]}"
 response = Net::HTTP.get(URI(api_url))
 json = JSON.parse(response)
@@ -36,5 +34,6 @@ end
 
 remote = repo['ssh_url']
 remote_ref = head['ref']
+local_ref = `git rev-parse HEAD`.strip
 
 exec("git push -f #{remote} #{local_ref}:#{remote_ref}")

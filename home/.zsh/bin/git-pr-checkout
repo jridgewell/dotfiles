@@ -5,8 +5,8 @@ require 'net/http'
 require 'uri'
 
 def usage
-  puts "USAGE: git pr-pull PULL_REQUEST_URL"
-  puts "\tgit pr-pull https://github.com/babel/babel/pull/3"
+  puts "USAGE: git pr-checkout PULL_REQUEST_URL"
+  puts "\tgit pr-checkout https://github.com/babel/babel/pull/3"
   exit 1
 end
 
@@ -36,4 +36,4 @@ remote = repo['ssh_url']
 remote_ref = head['ref']
 branch = "pr-#{match[2]}"
 
-exec("git fetch -fu #{remote} #{remote_ref}:#{branch} && git rebase #{branch}")
+exec("git fetch -fu #{remote} #{remote_ref}:#{branch} && git checkout -B #{branch} #{branch}")
