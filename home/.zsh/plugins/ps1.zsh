@@ -32,7 +32,7 @@ prompt_end() {
 }
 
 function parse_git_dirty() {
-  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+  git diff --quiet --ignore-submodules HEAD 2>/dev/null || echo "*"
 }
 function is_vim_subshell() {
     if [[ -z $VIMRUNTIME ]]; then
