@@ -2,7 +2,7 @@
 # Based on https://gist.github.com/gnarf/5406589
 
 def command?(name)
-  `which #{name}`
+  `sh -c 'type -p  #{name}'`
   $?.success?
 end
 
