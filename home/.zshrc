@@ -1,4 +1,11 @@
 ##########################
+# Source zsh Custom ######
+##########################
+for config_file ($HOME/.zsh/custom/*.zsh); do
+    source $config_file
+done
+
+##########################
 # Source zsh Config ######
 ##########################
 for config_file ($HOME/.zsh/config/*.zsh); do
@@ -9,13 +16,6 @@ done
 # Source zsh Functions ###
 ##########################
 for config_file ($HOME/.zsh/functions/*.zsh); do
-    source $config_file
-done
-
-##########################
-# Source zsh Custom ######
-##########################
-for config_file ($HOME/.zsh/custom/*.zsh); do
     source $config_file
 done
 
