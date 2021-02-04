@@ -19,6 +19,7 @@
 [alias]
   undo = reset --soft HEAD^
   c = commit -v
+  co = checkout
   d = diff --color-words
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
@@ -29,6 +30,7 @@
   quotepath = false
   whitespace = trailing-space,space-before-tab
   autocrlf = input
+	precomposeUnicode = true
 [apply]
   ;whitespace = error
 [format]
@@ -39,7 +41,7 @@
   ;autosetuprebase = always
 [push]
   default = current
-  followTags = true
+  ; followTags = true
 [pull]
   ff = only
 [filter "media"]
@@ -59,3 +61,5 @@
 	colorMoved = default
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
