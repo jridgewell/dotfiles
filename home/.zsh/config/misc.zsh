@@ -4,20 +4,31 @@ export EDITOR=vim
 ##########################
 ### Language Specific ####
 ##########################
-# Ruby
-if is-callable rbenv; then
-    eval "$(rbenv init -)";
-fi
-# PHP
-if is-callable phpenv; then
-    eval "$(phpenv init -)";
-fi
 # Node.js
 if is-callable nvm-exec; then
     export NVM_DIR="$HOME/.nvm"
-    source "$NVM_DIR/nvm.sh"
+    # source "$NVM_DIR/nvm.sh"
+    lazy_load_nvm() {
+        unset -f node npm npx nvm
+        [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+    }
+
+    node() {
+        lazy_load_nvm
+        node $@
+    }
+    npm() {
+        lazy_load_nvm
+        npm $@
+    }
+    npx() {
+        lazy_load_nvm
+        npx $@
+    }
+    nvm() {
+        lazy_load_nvm
+        nvm $@
+    }
 else
     export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 fi
-# Perl5
-export PERL5LIB="/usr/local/share/perl5:$PERL5LIB"
