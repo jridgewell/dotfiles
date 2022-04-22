@@ -9,7 +9,7 @@ if is-callable nvm-exec; then
     export NVM_DIR="$HOME/.nvm"
     # source "$NVM_DIR/nvm.sh"
     lazy_load_nvm() {
-        unset -f node npm npx nvm
+        unset -f node npm npx yarn nvm
         [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
     }
 
@@ -24,6 +24,10 @@ if is-callable nvm-exec; then
     npx() {
         lazy_load_nvm
         npx $@
+    }
+    yarn() {
+        lazy_load_nvm
+        yarn $@
     }
     nvm() {
         lazy_load_nvm
