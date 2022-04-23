@@ -25,6 +25,7 @@
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep '^[[:lower:]]'
   back = checkout @{-1}
+  message = log --format=%B -n 1
 [core]
   excludesfile = ~/.cvsignore
   quotepath = false
@@ -66,3 +67,5 @@
   pushInsteadOf = "git@github.com:"
 [init]
 	defaultBranch = main
+[merge]
+  conflictStyle = zdiff3
