@@ -42,6 +42,7 @@
   ;autosetuprebase = always
 [push]
   default = current
+  autoSetupRemote = true
   ; followTags = true
 [pull]
   ff = only
